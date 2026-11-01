@@ -1,0 +1,13 @@
+# Node dependencies
+node_modules/
+npm-debug.log
+
+# Python virtual environment & cache
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Model artifacts & data rahasia
+ml-inference/models/*.pkl
+.DS_Store
