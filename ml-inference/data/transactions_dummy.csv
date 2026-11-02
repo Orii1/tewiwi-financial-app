@@ -1,0 +1,151 @@
+tanggal,deskripsi,nominal,tipe_transaksi,kategori
+2026-03-23,Penjualan Roti Tawar Spesial,306787,Pemasukan,Penjualan
+2026-01-29,Orderan Kue Tart Coklat,621858,Pemasukan,Penjualan
+2026-01-12,Penjualan Roti Sobek Keju,81244,Pemasukan,Penjualan
+2026-01-12,Penjualan Roti Manis Aneka Rasa,681262,Pemasukan,Penjualan
+2026-01-04,Penjualan Roti Manis Aneka Rasa,489898,Pemasukan,Penjualan
+2026-01-29,Penjualan Roti Tawar Spesial,56814,Pemasukan,Penjualan
+2026-01-21,Belanja Telur Ayam Fresh,682738,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-20,Catering Snack Box Arisan,157175,Pemasukan,Penjualan
+2026-01-12,Catering Snack Box Arisan,410663,Pemasukan,Penjualan
+2026-03-19,Penjualan Roti Sobek Keju,531741,Pemasukan,Penjualan
+2026-03-10,Penjualan Donat Gula,132627,Pemasukan,Penjualan
+2026-03-12,Catering Snack Box Arisan,655397,Pemasukan,Penjualan
+2026-01-25,Beli Tepung Terigu 25kg,1486769,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-30,Belanja Gula Pasir & Mentega,1893731,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-30,Beli Cokelat Batang & Keju,682952,Pengeluaran,Bahan Baku (Ingredients)
+2026-02-28,Belanja Telur Ayam Fresh,441110,Pengeluaran,Bahan Baku (Ingredients)
+2026-02-17,Penjualan Roti Tawar Spesial,729514,Pemasukan,Penjualan
+2026-01-10,Bayar Listrik Toko Bulanan,1220172,Pengeluaran,Operasional
+2026-02-01,Penjualan Donat Gula,333060,Pemasukan,Penjualan
+2026-03-23,Beli Kemasan Box Dus Roti,1535740,Pengeluaran,Packaging
+2026-02-11,Beli Tepung Terigu 25kg,580348,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-05,Beli Cokelat Batang & Keju,661493,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-09,Catering Snack Box Arisan,272955,Pemasukan,Penjualan
+2026-03-25,Pesanan Brownies Kukus,199811,Pemasukan,Penjualan
+2026-02-03,Penjualan Roti Manis Aneka Rasa,615158,Pemasukan,Penjualan
+2026-02-03,Beli Cokelat Batang & Keju,1982871,Pengeluaran,Bahan Baku (Ingredients)
+2026-03-16,Paket Hampers Lebaran/Natal,195051,Pemasukan,Penjualan
+2026-03-07,Penjualan Roti Sobek Keju,164975,Pemasukan,Penjualan
+2026-01-20,Beli Cokelat Batang & Keju,1350760,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-09,Pesanan Brownies Kukus,604816,Pemasukan,Penjualan
+2026-02-02,Beli Tepung Terigu 25kg,1526657,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-15,Iklan Sponsored Instagram Ads,1674704,Pengeluaran,Marketing
+2026-02-04,Belanja Telur Ayam Fresh,333941,Pengeluaran,Bahan Baku (Ingredients)
+2026-02-07,Pesanan Brownies Kukus,53402,Pemasukan,Penjualan
+2026-02-03,Bayar Listrik Toko Bulanan,1164685,Pengeluaran,Operasional
+2026-01-14,Gaji Karyawan Shift Pagi,1865108,Pengeluaran,SDM / Gaji
+2026-03-23,Paket Hampers Lebaran/Natal,210263,Pemasukan,Penjualan
+2026-02-17,Iklan Sponsored Instagram Ads,1732898,Pengeluaran,Marketing
+2026-03-09,Belanja Telur Ayam Fresh,1124680,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-03,Catering Snack Box Arisan,372451,Pemasukan,Penjualan
+2026-01-31,Orderan Kue Tart Coklat,139814,Pemasukan,Penjualan
+2026-03-04,Iklan Sponsored Instagram Ads,1706071,Pengeluaran,Marketing
+2026-01-17,Pesanan Brownies Kukus,626510,Pemasukan,Penjualan
+2026-01-22,Penjualan Donat Gula,272086,Pemasukan,Penjualan
+2026-03-11,Beli Kemasan Box Dus Roti,1595162,Pengeluaran,Packaging
+2026-02-09,Catering Snack Box Arisan,509381,Pemasukan,Penjualan
+2026-03-08,Paket Hampers Lebaran/Natal,285612,Pemasukan,Penjualan
+2026-01-09,Penjualan Roti Manis Aneka Rasa,291292,Pemasukan,Penjualan
+2026-03-17,Orderan Kue Tart Coklat,711759,Pemasukan,Penjualan
+2026-01-08,Penjualan Roti Sobek Keju,396479,Pemasukan,Penjualan
+2026-01-10,Penjualan Roti Tawar Spesial,558993,Pemasukan,Penjualan
+2026-01-28,Pesanan Brownies Kukus,304801,Pemasukan,Penjualan
+2026-03-02,Beli Kemasan Box Dus Roti,297815,Pengeluaran,Packaging
+2026-01-13,Belanja Telur Ayam Fresh,988308,Pengeluaran,Bahan Baku (Ingredients)
+2026-02-22,Penjualan Roti Sobek Keju,735197,Pemasukan,Penjualan
+2026-03-24,Penjualan Donat Gula,405784,Pemasukan,Penjualan
+2026-01-14,Paket Hampers Lebaran/Natal,612336,Pemasukan,Penjualan
+2026-02-27,Penjualan Pastry Croissant,342075,Pemasukan,Penjualan
+2026-03-01,Orderan Kue Tart Coklat,514656,Pemasukan,Penjualan
+2026-03-12,Penjualan Roti Manis Aneka Rasa,65474,Pemasukan,Penjualan
+2026-01-12,Beli Kemasan Box Dus Roti,448779,Pengeluaran,Packaging
+2026-02-22,Paket Hampers Lebaran/Natal,470521,Pemasukan,Penjualan
+2026-01-08,Penjualan Roti Sobek Keju,459386,Pemasukan,Penjualan
+2026-02-03,Biaya Gas LPG 12kg,698210,Pengeluaran,Operasional
+2026-02-24,Iklan Sponsored Instagram Ads,1488044,Pengeluaran,Marketing
+2026-03-04,Penjualan Roti Tawar Spesial,278275,Pemasukan,Penjualan
+2026-01-08,Penjualan Roti Manis Aneka Rasa,113918,Pemasukan,Penjualan
+2026-02-10,Pesanan Brownies Kukus,577276,Pemasukan,Penjualan
+2026-03-09,Penjualan Roti Manis Aneka Rasa,134002,Pemasukan,Penjualan
+2026-01-24,Orderan Kue Tart Coklat,296629,Pemasukan,Penjualan
+2026-02-21,Paket Hampers Lebaran/Natal,657040,Pemasukan,Penjualan
+2026-03-18,Orderan Kue Tart Coklat,489589,Pemasukan,Penjualan
+2026-03-26,Penjualan Roti Manis Aneka Rasa,381737,Pemasukan,Penjualan
+2026-02-03,Catering Snack Box Arisan,300280,Pemasukan,Penjualan
+2026-02-03,Penjualan Roti Tawar Spesial,529434,Pemasukan,Penjualan
+2026-02-10,Belanja Gula Pasir & Mentega,119535,Pengeluaran,Bahan Baku (Ingredients)
+2026-02-28,Belanja Gula Pasir & Mentega,253638,Pengeluaran,Bahan Baku (Ingredients)
+2026-03-10,Penjualan Roti Tawar Spesial,188890,Pemasukan,Penjualan
+2026-02-14,Beli Kemasan Box Dus Roti,874954,Pengeluaran,Packaging
+2026-02-06,Penjualan Roti Manis Aneka Rasa,367212,Pemasukan,Penjualan
+2026-03-20,Iklan Sponsored Instagram Ads,116406,Pengeluaran,Marketing
+2026-03-27,Gaji Karyawan Shift Pagi,1491226,Pengeluaran,SDM / Gaji
+2026-01-14,Bayar Listrik Toko Bulanan,654625,Pengeluaran,Operasional
+2026-01-15,Iklan Sponsored Instagram Ads,425997,Pengeluaran,Marketing
+2026-02-04,Paket Hampers Lebaran/Natal,409536,Pemasukan,Penjualan
+2026-01-27,Gaji Karyawan Shift Pagi,1159919,Pengeluaran,SDM / Gaji
+2026-03-04,Penjualan Roti Sobek Keju,146781,Pemasukan,Penjualan
+2026-03-23,Penjualan Roti Tawar Spesial,96228,Pemasukan,Penjualan
+2026-01-01,Penjualan Pastry Croissant,718061,Pemasukan,Penjualan
+2026-02-03,Pesanan Brownies Kukus,628478,Pemasukan,Penjualan
+2026-04-01,Penjualan Roti Sobek Keju,167308,Pemasukan,Penjualan
+2026-01-10,Bayar Listrik Toko Bulanan,1244185,Pengeluaran,Operasional
+2026-01-05,Iklan Sponsored Instagram Ads,410575,Pengeluaran,Marketing
+2026-02-25,Penjualan Roti Tawar Spesial,432364,Pemasukan,Penjualan
+2026-01-06,Beli Kemasan Box Dus Roti,1530397,Pengeluaran,Packaging
+2026-02-01,Belanja Telur Ayam Fresh,1736022,Pengeluaran,Bahan Baku (Ingredients)
+2026-03-13,Beli Cokelat Batang & Keju,1401621,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-20,Beli Kemasan Box Dus Roti,1913209,Pengeluaran,Packaging
+2026-01-21,Bayar Listrik Toko Bulanan,1948463,Pengeluaran,Operasional
+2026-02-22,Catering Snack Box Arisan,481712,Pemasukan,Penjualan
+2026-03-27,Beli Kemasan Box Dus Roti,659532,Pengeluaran,Packaging
+2026-01-21,Belanja Gula Pasir & Mentega,902248,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-05,Beli Kemasan Box Dus Roti,518534,Pengeluaran,Packaging
+2026-02-28,Paket Hampers Lebaran/Natal,283752,Pemasukan,Penjualan
+2026-01-04,Beli Cokelat Batang & Keju,788415,Pengeluaran,Bahan Baku (Ingredients)
+2026-02-05,Gaji Karyawan Shift Pagi,836406,Pengeluaran,SDM / Gaji
+2026-03-24,Penjualan Roti Manis Aneka Rasa,397235,Pemasukan,Penjualan
+2026-01-04,Penjualan Roti Tawar Spesial,237241,Pemasukan,Penjualan
+2026-03-16,Gaji Karyawan Shift Pagi,180231,Pengeluaran,SDM / Gaji
+2026-01-14,Catering Snack Box Arisan,378914,Pemasukan,Penjualan
+2026-02-25,Iklan Sponsored Instagram Ads,342526,Pengeluaran,Marketing
+2026-02-19,Beli Kemasan Box Dus Roti,634191,Pengeluaran,Packaging
+2026-01-06,Beli Tepung Terigu 25kg,1190351,Pengeluaran,Bahan Baku (Ingredients)
+2026-03-10,Beli Kemasan Box Dus Roti,863827,Pengeluaran,Packaging
+2026-02-25,Catering Snack Box Arisan,703425,Pemasukan,Penjualan
+2026-02-10,Belanja Gula Pasir & Mentega,1609434,Pengeluaran,Bahan Baku (Ingredients)
+2026-02-08,Penjualan Donat Gula,392027,Pemasukan,Penjualan
+2026-02-21,Iklan Sponsored Instagram Ads,366941,Pengeluaran,Marketing
+2026-01-25,Penjualan Donat Gula,232480,Pemasukan,Penjualan
+2026-03-20,Penjualan Donat Gula,624553,Pemasukan,Penjualan
+2026-01-01,Paket Hampers Lebaran/Natal,500770,Pemasukan,Penjualan
+2026-03-16,Belanja Telur Ayam Fresh,1075150,Pengeluaran,Bahan Baku (Ingredients)
+2026-02-26,Paket Hampers Lebaran/Natal,586004,Pemasukan,Penjualan
+2026-03-02,Bayar Listrik Toko Bulanan,1481710,Pengeluaran,Operasional
+2026-01-11,Catering Snack Box Arisan,147923,Pemasukan,Penjualan
+2026-01-31,Beli Kemasan Box Dus Roti,1791484,Pengeluaran,Packaging
+2026-01-26,Penjualan Roti Sobek Keju,306736,Pemasukan,Penjualan
+2026-03-02,Belanja Gula Pasir & Mentega,1055076,Pengeluaran,Bahan Baku (Ingredients)
+2026-02-23,Beli Kemasan Box Dus Roti,1606480,Pengeluaran,Packaging
+2026-03-31,Penjualan Donat Gula,305836,Pemasukan,Penjualan
+2026-01-19,Beli Tepung Terigu 25kg,1972043,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-14,Beli Kemasan Box Dus Roti,468861,Pengeluaran,Packaging
+2026-03-31,Penjualan Roti Sobek Keju,634482,Pemasukan,Penjualan
+2026-02-01,Belanja Gula Pasir & Mentega,1057269,Pengeluaran,Bahan Baku (Ingredients)
+2026-01-18,Iklan Sponsored Instagram Ads,1272151,Pengeluaran,Marketing
+2026-03-18,Pesanan Brownies Kukus,692412,Pemasukan,Penjualan
+2026-03-06,Penjualan Roti Manis Aneka Rasa,517574,Pemasukan,Penjualan
+2026-01-21,Biaya Gas LPG 12kg,1043864,Pengeluaran,Operasional
+2026-02-03,Gaji Karyawan Shift Pagi,1706027,Pengeluaran,SDM / Gaji
+2026-03-08,Paket Hampers Lebaran/Natal,337936,Pemasukan,Penjualan
+2026-02-26,Penjualan Roti Tawar Spesial,295884,Pemasukan,Penjualan
+2026-02-04,Penjualan Roti Manis Aneka Rasa,134491,Pemasukan,Penjualan
+2026-01-18,Penjualan Donat Gula,210227,Pemasukan,Penjualan
+2026-04-01,Penjualan Donat Gula,477398,Pemasukan,Penjualan
+2026-02-12,Penjualan Donat Gula,115290,Pemasukan,Penjualan
+2026-01-27,Beli Cokelat Batang & Keju,1997583,Pengeluaran,Bahan Baku (Ingredients)
+2026-03-16,Beli Tepung Terigu 25kg,1896697,Pengeluaran,Bahan Baku (Ingredients)
+2026-03-15,Penjualan Roti Sobek Keju,418845,Pemasukan,Penjualan
+2026-02-08,Beli Cokelat Batang & Keju,1228730,Pengeluaran,Bahan Baku (Ingredients)
+2026-03-11,Beli Kemasan Box Dus Roti,1123891,Pengeluaran,Packaging
