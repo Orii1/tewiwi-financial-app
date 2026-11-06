@@ -53,3 +53,51 @@ exports.createTransaction = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+// Update transaksi berdasarkan ID
+exports.updateTransaction = async (req, res) => {
+  try {
+    const { id } = req.params;
+    let { tanggal, deskripsi, nominal, tipe_transaksi, kategori } = req.body;
+
+    // Jika tipe pengeluaran dan kategori kosong/berubah, bisa dipanggil ulang ML atau dibiarkan
+    if (tipe_transaksi === 'Pemasukan') {
+      kategori = 'Penjualan';
+    } else if (!kategori) {
+      kategori = 'Lainnya';
+    }
+
+    const query = 'UPDATE transactions SET tanggal = ?, deskripsi = ?, nominal = ?, tipe_transaksi = ?, kategori = ? WHERE id = ?';
+    const [result] = await db.query(query, [tanggal, deskripsi, nominal, tipe_transaksi, kategori, id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Transaksi tidak ditemukan.' });
+    }
+
+    res.json({
+      success: true,
+      message: 'Transaksi berhasil diperbarui!',
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// Hapus transaksi berdasarkan ID
+exports.deleteTransaction = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [result] = await db.query('DELETE FROM transactions WHERE id = ?', [id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Transaksi tidak ditemukan.' });
+    }
+
+    res.json({
+      success: true,
+      message: 'Transaksi berhasil dihapus!',
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
