@@ -28,7 +28,7 @@ exports.createTransaction = async (req, res) => {
         kategori = mlResponse.data.kategori_prediksi;
       } catch (mlError) {
         console.error('Gagal menghubungi layanan ML:', mlError.message);
-        kategori = 'Lainnya'; // Fallback jika layanan ML sedang offline
+        kategori = 'Lainnya';
       }
     } else if (tipe_transaksi === 'Pemasukan') {
       kategori = 'Penjualan';

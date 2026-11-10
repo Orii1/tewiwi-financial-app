@@ -35,6 +35,17 @@ function App() {
     fetchTransactions();
   }, []);
 
+  // State untuk Notifikasi Kustom (Toast)
+  const [notification, setNotification] = useState({ show: false, message: '', type: 'success' });
+
+  // Fungsi helper untuk memicu notifikasi
+  const showNotification = (message, type = 'success') => {
+    setNotification({ show: true, message, type });
+    setTimeout(() => {
+      setNotification((prev) => ({ ...prev, show: false }));
+    }, 3000);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -52,7 +63,6 @@ function App() {
     e.preventDefault();
     setLoading(true);
     try {
-      // Bersihkan titik pada nominal sebelum dikirim ke backend
       const submissionData = {
         ...form,
         nominal: form.nominal.toString().replace(/\./g, '')
@@ -60,15 +70,16 @@ function App() {
 
       if (isEditing) {
         await updateTransaction(editId, submissionData);
-        alert('Transaksi berhasil diperbarui!');
+        showNotification('✨ Transaksi berhasil diperbarui.');
       } else {
         await addTransaction(submissionData);
+        showNotification('🎉 Transaksi baru berhasil disimpan.');
       }
       resetForm();
       fetchTransactions();
     } catch (error) {
       console.error('Gagal menyimpan transaksi:', error);
-      alert('Terjadi kesalahan saat menyimpan transaksi.');
+      showNotification('Terjadi kesalahan saat menyimpan transaksi.', 'error');
     } finally {
       setLoading(false);
     }
@@ -91,10 +102,11 @@ function App() {
     if (window.confirm('Apakah kamu yakin ingin menghapus transaksi ini?')) {
       try {
         await deleteTransaction(id);
+        showNotification('🗑️ Transaksi berhasil dihapus.');
         fetchTransactions();
       } catch (error) {
         console.error('Gagal menghapus transaksi:', error);
-        alert('Gagal menghapus transaksi.');
+        showNotification('Gagal menghapus transaksi.', 'error');
       }
     }
   };
@@ -146,9 +158,43 @@ function App() {
     return split[1] !== undefined ? rupiah + ',' + split[1] : rupiah;
   };
 
+  // State untuk Paginasi
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  const sortedTransactions = [...filteredTransactions].sort((a, b) => b.id - a.id);
+
+  const totalPages = Math.ceil(sortedTransactions.length / itemsPerPage) || 1;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentTransactions = sortedTransactions.slice(indexOfFirstItem, indexOfLastItem);
+
   return (
     <div style={{ minHeight: '100vh', width: '100%', background: '#0f172a', color: '#f8fafc', padding: '30px 40px', boxSizing: 'border-box' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+
+        {/* Toast Notifikasi Kustom */}
+        {notification.show && (
+          <div style={{
+            position: 'fixed',
+            top: '25px',
+            right: '35px',
+            background: notification.type === 'success' ? '#1e293b' : '#7f1d1d',
+            color: notification.type === 'success' ? '#4ade80' : '#f87171',
+            padding: '14px 22px',
+            borderRadius: '12px',
+            border: `1px solid ${notification.type === 'success' ? '#34d399' : '#f87171'}`,
+            boxShadow: '0 10px 25px rgba(0,0,0,0.4)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            fontWeight: '600',
+            fontSize: '14px',
+            animation: 'fadeIn 0.3s ease'
+          }}>
+            <span>{notification.message}</span>
+          </div>
+        )}
 
         {/* Header */}
         <header style={{ marginBottom: '35px', textAlign: 'center' }}>
@@ -285,33 +331,33 @@ function App() {
           </form>
         </div>
 
-        {/* Tabel Riwayat Transaksi dengan Filter Periode Profesional */}
+{/* Tabel Riwayat Transaksi dengan Nomor & Paginasi */}
         <div style={{ background: '#1e293b', borderRadius: '16px', border: '1px solid #334155', overflow: 'hidden' }}>
           <div style={{ padding: '20px 30px', borderBottom: '1px solid #334155', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
             <div>
               <h3 style={{ margin: '0 0 4px 0', fontSize: '1.2rem', fontWeight: '600' }}>Riwayat Transaksi</h3>
               <span style={{ fontSize: '13px', color: '#94a3b8' }}>
-                Menampilkan {filteredTransactions.length} dari total {transactions.length} transaksi
+                Menampilkan {filteredTransactions.length > 0 ? indexOfFirstItem + 1 : 0} - {Math.min(indexOfLastItem, filteredTransactions.length)} dari total {filteredTransactions.length} data
               </span>
             </div>
-
-            {/* Filter Periode yang Lebih Profesional */}
+            
+            {/* Filter Periode */}
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: '#0f172a', padding: '6px 12px', borderRadius: '10px', border: '1px solid #475569' }}>
                 <Filter size={15} color="#38bdf8" />
                 <span style={{ fontSize: '13px', color: '#cbd5e1', fontWeight: '500' }}>Periode:</span>
-                <input
-                  type="month"
-                  value={selectedMonth}
-                  onChange={(e) => setSelectedMonth(e.target.value)}
+                <input 
+                  type="month" 
+                  value={selectedMonth} 
+                  onChange={(e) => { setSelectedMonth(e.target.value); setCurrentPage(1); }}
                   style={{ background: 'transparent', border: 'none', color: '#fff', fontSize: '13px', outline: 'none', cursor: 'pointer' }}
                 />
               </div>
 
               {selectedMonth && (
-                <button
-                  onClick={() => setSelectedMonth('')}
-                  style={{ background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.3)', color: '#38bdf8', padding: '7px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontWeight: '600', transition: 'background 0.2s' }}
+                <button 
+                  onClick={() => { setSelectedMonth(''); setCurrentPage(1); }} 
+                  style={{ background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.3)', color: '#38bdf8', padding: '7px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontWeight: '600' }}
                 >
                   Reset Filter
                 </button>
@@ -320,58 +366,89 @@ function App() {
           </div>
 
           <div style={{ overflowX: 'auto', width: '100%' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '14px', minWidth: '700px' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '14px', minWidth: '750px' }}>
               <thead>
                 <tr style={{ background: '#0f172a', color: '#94a3b8', borderBottom: '1px solid #334155' }}>
-                  <th style={{ padding: '16px 24px', fontWeight: '600' }}>Tanggal</th>
-                  <th style={{ padding: '16px 24px', fontWeight: '600' }}>Tipe</th>
-                  <th style={{ padding: '16px 24px', fontWeight: '600' }}>Deskripsi</th>
-                  <th style={{ padding: '16px 24px', fontWeight: '600' }}>Kategori (AI)</th>
-                  <th style={{ padding: '16px 24px', fontWeight: '600', textAlign: 'right' }}>Nominal</th>
-                  <th style={{ padding: '16px 24px', fontWeight: '600', textAlign: 'center' }}>Aksi</th>
+                  <th style={{ padding: '16px 20px', fontWeight: '600', width: '60px', textAlign: 'center' }}>No</th>
+                  <th style={{ padding: '16px 20px', fontWeight: '600' }}>Tanggal</th>
+                  <th style={{ padding: '16px 20px', fontWeight: '600' }}>Tipe</th>
+                  <th style={{ padding: '16px 20px', fontWeight: '600' }}>Deskripsi</th>
+                  <th style={{ padding: '16px 20px', fontWeight: '600' }}>Kategori (AI)</th>
+                  <th style={{ padding: '16px 20px', fontWeight: '600', textAlign: 'right' }}>Nominal</th>
+                  <th style={{ padding: '16px 20px', fontWeight: '600', textAlign: 'center' }}>Aksi</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredTransactions.length === 0 ? (
+                {currentTransactions.length === 0 ? (
                   <tr>
-                    <td colSpan="6" style={{ textAlign: 'center', padding: '40px', color: '#94a3b8' }}>
+                    <td colSpan="7" style={{ textAlign: 'center', padding: '40px', color: '#94a3b8' }}>
                       Tidak ada data transaksi pada periode ini.
                     </td>
                   </tr>
                 ) : (
-                  filteredTransactions.map((tx) => (
-                    <tr key={tx.id} style={{ borderBottom: '1px solid #334155' }}>
-                      <td style={{ padding: '16px 24px', color: '#cbd5e1' }}>{tx.tanggal.split('T')[0]}</td>
-                      <td style={{ padding: '16px 24px' }}>
-                        <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: '600', background: tx.tipe_transaksi === 'Pemasukan' ? 'rgba(74, 222, 128, 0.15)' : 'rgba(248, 113, 113, 0.15)', color: tx.tipe_transaksi === 'Pemasukan' ? '#4ade80' : '#f87171' }}>
-                          {tx.tipe_transaksi}
-                        </span>
-                      </td>
-                      <td style={{ padding: '16px 24px', fontWeight: '500', color: '#f8fafc' }}>{tx.deskripsi}</td>
-                      <td style={{ padding: '16px 24px' }}>
-                        <span style={{ background: '#334155', padding: '4px 10px', borderRadius: '6px', fontSize: '12px', color: '#38bdf8', fontWeight: '500' }}>
-                          {tx.kategori}
-                        </span>
-                      </td>
-                      <td style={{ padding: '16px 24px', textAlign: 'right', fontWeight: '700', color: tx.tipe_transaksi === 'Pemasukan' ? '#4ade80' : '#f87171' }}>
-                        Rp {Number(tx.nominal).toLocaleString('id-ID')}
-                      </td>
-                      <td style={{ padding: '16px 24px', textAlign: 'center' }}>
-                        <div style={{ display: 'inline-flex', gap: '8px' }}>
-                          <button onClick={() => handleEdit(tx)} style={{ background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.3)', color: '#38bdf8', padding: '6px 10px', borderRadius: '6px', cursor: 'pointer' }} title="Edit">
-                            <Edit3 size={15} />
-                          </button>
-                          <button onClick={() => handleDelete(tx.id)} style={{ background: 'rgba(248, 113, 113, 0.15)', border: '1px solid rgba(248, 113, 113, 0.3)', color: '#f87171', padding: '6px 10px', borderRadius: '6px', cursor: 'pointer' }} title="Hapus">
-                            <Trash2 size={15} />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
+                  currentTransactions.map((tx, index) => {
+                    // Hitung nomor urut yang konsisten lintas halaman
+                    const rowNumber = indexOfFirstItem + index + 1;
+                    return (
+                      <tr key={tx.id} style={{ borderBottom: '1px solid #334155' }}>
+                        <td style={{ padding: '16px 20px', textAlign: 'center', color: '#94a3b8', fontWeight: '500' }}>{rowNumber}</td>
+                        <td style={{ padding: '16px 20px', color: '#cbd5e1' }}>{tx.tanggal.split('T')[0]}</td>
+                        <td style={{ padding: '16px 20px' }}>
+                          <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: '600', background: tx.tipe_transaksi === 'Pemasukan' ? 'rgba(74, 222, 128, 0.15)' : 'rgba(248, 113, 113, 0.15)', color: tx.tipe_transaksi === 'Pemasukan' ? '#4ade80' : '#f87171' }}>
+                            {tx.tipe_transaksi}
+                          </span>
+                        </td>
+                        <td style={{ padding: '16px 20px', fontWeight: '500', color: '#f8fafc' }}>{tx.deskripsi}</td>
+                        <td style={{ padding: '16px 20px' }}>
+                          <span style={{ background: '#334155', padding: '4px 10px', borderRadius: '6px', fontSize: '12px', color: '#38bdf8', fontWeight: '500' }}>
+                            {tx.kategori}
+                          </span>
+                        </td>
+                        <td style={{ padding: '16px 20px', textAlign: 'right', fontWeight: '700', color: tx.tipe_transaksi === 'Pemasukan' ? '#4ade80' : '#f87171' }}>
+                          Rp {Number(tx.nominal).toLocaleString('id-ID')}
+                        </td>
+                        <td style={{ padding: '16px 20px', textAlign: 'center' }}>
+                          <div style={{ display: 'inline-flex', gap: '8px' }}>
+                            <button onClick={() => handleEdit(tx)} style={{ background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.3)', color: '#38bdf8', padding: '6px 10px', borderRadius: '6px', cursor: 'pointer' }} title="Edit">
+                              <Edit3 size={15} />
+                            </button>
+                            <button onClick={() => handleDelete(tx.id)} style={{ background: 'rgba(248, 113, 113, 0.15)', border: '1px solid rgba(248, 113, 113, 0.3)', color: '#f87171', padding: '6px 10px', borderRadius: '6px', cursor: 'pointer' }} title="Hapus">
+                              <Trash2 size={15} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
                 )}
               </tbody>
             </table>
           </div>
+          
+          {/* Kontrol Navigasi Paginasi */}
+          {totalPages > 1 && (
+            <div style={{ padding: '20px 30px', borderTop: '1px solid #334155', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '13px', color: '#94a3b8' }}>
+                Halaman {currentPage} dari {totalPages}
+              </span>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button 
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                  style={{ background: currentPage === 1 ? '#1e293b' : '#334155', color: currentPage === 1 ? '#64748b' : '#fff', border: '1px solid #475569', padding: '8px 14px', borderRadius: '6px', cursor: currentPage === 1 ? 'not-allowed' : 'pointer', fontSize: '13px', fontWeight: '600' }}
+                >
+                  Sebelumnya
+                </button>
+                <button 
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                  disabled={currentPage === totalPages}
+                  style={{ background: currentPage === totalPages ? '#1e293b' : '#334155', color: currentPage === totalPages ? '#64748b' : '#fff', border: '1px solid #475569', padding: '8px 14px', borderRadius: '6px', cursor: currentPage === totalPages ? 'not-allowed' : 'pointer', fontSize: '13px', fontWeight: '600' }}
+                >
+                  Selanjutnya
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
       </div>
