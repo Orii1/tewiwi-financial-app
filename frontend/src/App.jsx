@@ -202,7 +202,7 @@ function App() {
             <Wallet size={20} color="#38bdf8" />
             <span style={{ fontSize: '14px', fontWeight: '600', color: '#38bdf8' }}>Tewiwi House Dashboard</span>
           </div>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: '800', margin: '0 0 8px 0', background: 'linear-gradient(to right, #38bdf8, #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          <h1 style={{ fontSize: '2.5rem', fontWeight: '700', margin: '0 0 8px 0', background: 'linear-gradient(to right, #38bdf8, #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             Financial & Cash Flow Assistant
           </h1>
           <p style={{ color: '#94a3b8', fontSize: '1rem', margin: 0 }}>

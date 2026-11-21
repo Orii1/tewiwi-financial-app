@@ -12,7 +12,6 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/transactions', transactionRoutes);
 
-// Endpoint Cek Kesehatan Server & Database
 app.get('/', async (req, res) => {
   try {
     const [rows] = await db.query('SELECT 1 + 1 AS solution');
