@@ -22,7 +22,8 @@ exports.createTransaction = async (req, res) => {
     // Jika tipe transaksi adalah Pengeluaran dan kategori belum diisi, minta bantuan ML FastAPI
     if (tipe_transaksi === 'Pengeluaran' && (!kategori || kategori === '')) {
       try {
-        const mlResponse = await axios.post('http://127.0.0.1:8000/predict-category', {
+        const mlBaseUrl = process.env.ML_SERVICE_URL || 'http://127.0.0.1:8000';
+        const mlResponse = await axios.post(`${mlBaseUrl}/predict-category`, {
           deskripsi: deskripsi
         });
         kategori = mlResponse.data.kategori_prediksi;
